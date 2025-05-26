@@ -5,17 +5,16 @@ import androidx.compose.ui.unit.dp
 
 object SupportingTextTopAppBarDefaults {
     object Small {
-        val ExpandedHeight: Dp = 64.dp
-        val CollapsedHeight: Dp = 0.dp
+        val height: Dp = 64.dp
     }
     
     object Medium {
         val ExpandedHeight: Dp = 136.dp
-        val CollapsedHeight: Dp = Small.ExpandedHeight
+        val CollapsedHeight: Dp = Small.height
     }
     
     object Large {
         val ExpandedHeight: Dp = 152.dp
-        val CollapsedHeight: Dp = Small.ExpandedHeight
+        val CollapsedHeight: Dp = Small.height
     }
 }
