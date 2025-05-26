@@ -18,8 +18,8 @@ import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.LargeTopAppBar
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.ProvideTextStyle
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -38,14 +38,14 @@ import androidx.compose.ui.unit.dp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MediumSupportingTextTopBar(
+fun LargeSupportingTextTopBar(
     title: @Composable (() -> Unit),
     supportingText: @Composable (RowScope.() -> Unit),
     scrollBehavior: TopAppBarScrollBehavior? = null,
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable (RowScope.() -> Unit) = {},
-    collapsedHeight: Dp = SupportingTextTopAppBarDefaults.Medium.CollapsedHeight,
-    expandedHeight: Dp = SupportingTextTopAppBarDefaults.Medium.ExpandedHeight,
+    collapsedHeight: Dp = SupportingTextTopAppBarDefaults.Large.CollapsedHeight,
+    expandedHeight: Dp = SupportingTextTopAppBarDefaults.Large.ExpandedHeight,
     windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
     colors: TopAppBarColors = TopAppBarDefaults.mediumTopAppBarColors()
 ) {
@@ -57,7 +57,7 @@ fun MediumSupportingTextTopBar(
             }
         }
     }
-    MediumTopAppBar(
+    LargeTopAppBar(
         title = {
             Column(
                 verticalArrangement = Arrangement.spacedBy(
@@ -69,7 +69,7 @@ fun MediumSupportingTextTopBar(
             ) {
                 ProvideTextStyle(
                     when (isExpanded) {
-                        true -> MaterialTheme.typography.headlineSmall
+                        true -> MaterialTheme.typography.displaySmall
                         false -> MaterialTheme.typography.titleLarge
                     }
                 ) {
@@ -77,7 +77,7 @@ fun MediumSupportingTextTopBar(
                 }
                 ProvideTextStyle(
                     when (isExpanded) {
-                        true -> MaterialTheme.typography.labelLarge
+                        true -> MaterialTheme.typography.titleMedium
                         false -> MaterialTheme.typography.labelMedium
                     }
                 ) {
@@ -105,7 +105,7 @@ private fun Preview() {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
     Scaffold(
         topBar = {
-            MediumSupportingTextTopBar(
+            LargeSupportingTextTopBar(
                 title = { Text("Title text") },
                 supportingText = { Text("Some supporting text") },
                 navigationIcon = {
