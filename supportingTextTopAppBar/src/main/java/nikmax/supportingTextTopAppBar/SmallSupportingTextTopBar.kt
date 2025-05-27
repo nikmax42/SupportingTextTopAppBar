@@ -32,6 +32,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
@@ -41,12 +42,14 @@ import androidx.compose.ui.unit.dp
 fun SmallSupportingTextTopBar(
     title: @Composable (() -> Unit),
     supportingText: @Composable (RowScope.() -> Unit),
+    titleTextStyle: TextStyle = MaterialTheme.typography.titleLarge,
+    supportingTextStyle: TextStyle = MaterialTheme.typography.labelMedium,
     scrollBehavior: TopAppBarScrollBehavior? = null,
+    colors: TopAppBarColors = TopAppBarDefaults.mediumTopAppBarColors(),
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable (RowScope.() -> Unit) = {},
     height: Dp = SupportingTextTopAppBarDefaults.Small.height,
     windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
-    colors: TopAppBarColors = TopAppBarDefaults.mediumTopAppBarColors()
 ) {
     val isExpanded by remember {
         derivedStateOf {
@@ -66,10 +69,10 @@ fun SmallSupportingTextTopBar(
                     }
                 )
             ) {
-                ProvideTextStyle(MaterialTheme.typography.titleLarge) {
+                ProvideTextStyle(titleTextStyle) {
                     title()
                 }
-                ProvideTextStyle(MaterialTheme.typography.labelMedium) {
+                ProvideTextStyle(supportingTextStyle) {
                     Row {
                         supportingText()
                     }
