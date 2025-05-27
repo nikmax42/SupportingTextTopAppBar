@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 fun LargeSupportingTextTopBar(
     title: @Composable (() -> Unit),
     supportingText: @Composable (RowScope.() -> Unit),
+    modifier: Modifier = Modifier,
     titleExpandedTextStyle: TextStyle = MaterialTheme.typography.displaySmall,
     titleCollapsedTextStyle: TextStyle = MaterialTheme.typography.titleLarge,
     supportingTextExpandedTextStyle: TextStyle = MaterialTheme.typography.titleMedium,
@@ -98,7 +99,8 @@ fun LargeSupportingTextTopBar(
         expandedHeight = expandedHeight,
         windowInsets = windowInsets,
         colors = colors,
-        scrollBehavior = scrollBehavior
+        scrollBehavior = scrollBehavior,
+        modifier = modifier
     )
 }
 
